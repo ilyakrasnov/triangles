@@ -47,4 +47,5 @@ g.add_points([p1, p7, p10, p11, p12])
 h.add_points([p1, p8, p13, p14, p15])
 i.add_points([p1, p9, p16, p17, p18])
 
-count_triangles(all_lines)
+puzzle = Puzzle.new("Internet 1", all_lines)
+puzzle.count_triangles

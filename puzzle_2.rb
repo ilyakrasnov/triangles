@@ -30,4 +30,5 @@ c.add_points([p1, p4, p7, p10])
 d.add_points([p1, p5, p8, p11])
 e.add_points([p2, p6, p9, p11])
 
-count_triangles(all_lines)
+puzzle = Puzzle.new("Internet 2", all_lines)
+puzzle.count_triangles
