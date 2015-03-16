@@ -11,11 +11,6 @@ class Line
     @points.flatten!
   end
 
-  def print_points
-    @points.each do |point|
-      puts point.name
-    end
-  end
 end
 
 class Point
