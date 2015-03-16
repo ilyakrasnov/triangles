@@ -1,19 +1,14 @@
 class Line
-  def initialize(name)
+  attr_accessor :name, :points
+
+  def initialize(name, points=[])
     @name = name
-    @points = []
+    @points = points
   end
 
   def add_points(points)
     @points << points
-  end
-
-  def points
-    @points.flatten
-  end
-
-  def name
-    @name
+    @points.flatten!
   end
 
   def print_points
@@ -24,12 +19,10 @@ class Line
 end
 
 class Point
+  attr_accessor :name
+
   def initialize(name)
     @name = name
-  end
-
-  def name
-    @name
   end
 end
 
