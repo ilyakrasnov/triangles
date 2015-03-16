@@ -9,8 +9,8 @@ class Puzzle
     @lines = lines
   end
 
-  def count_triangles(lines)
-    triangles(lines.combination(3).to_a)
+  def count_triangles
+    triangles(@lines.combination(3).to_a)
   end
 
   private
