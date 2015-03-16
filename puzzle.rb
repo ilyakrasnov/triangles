@@ -15,12 +15,13 @@ class Puzzle
 
   private
 
-  def common_point(line_duo)
-    line_duo[0].points.each do |point_line_1|
-      line_duo[1].points.each do |point_line_2|
-        return point_line_1.name if point_line_1 == point_line_2
-      end
+  def triangles(line_triples)
+    triangles = []
+
+    line_triples.each do |triple|
+      triangles << triangle_points(triple) if triangle_points(triple).size == 3
     end
+    puts "I found #{triangles.compact.size} triangles"
   end
 
   def triangle_points(line_triple)
@@ -31,16 +32,15 @@ class Puzzle
       matching_points << common_point(line_duo)
     end
 
-    return matching_points.uniq
+    matching_points.uniq
   end
 
-  def triangles(line_triples)
-    triangles = []
-
-    line_triples.each do |triple|
-      triangles << triangle_points(triple) if triangle_points(triple).size == 3
+  def common_point(line_duo)
+    line_duo[0].points.each do |point_line_1|
+      line_duo[1].points.each do |point_line_2|
+        return point_line_1.name if point_line_1 == point_line_2
+      end
     end
-    puts "I found #{triangles.compact.size} triangles"
   end
 
 end
