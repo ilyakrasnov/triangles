@@ -4,4 +4,8 @@ class Point
   def initialize(name)
     @name = name
   end
+
+  def to_s
+    puts "I am point #{name}"
+  end
 end

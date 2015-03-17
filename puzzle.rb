@@ -19,27 +19,35 @@ class Puzzle
     triangles = []
 
     line_triples.each do |triple|
-      triangles << triangle_points(triple) if triangle_points(triple).size == 3
+      triangles << triangle_points(triple) if  triangle_points(triple).size == 3
     end
-    puts "I found #{triangles.compact.size} triangles"
+
+    puts "#{triangles.compact.size} triangles found:"
+    print_triangles(triangles.compact)
   end
 
   def triangle_points(line_triple)
-    lines_pares = line_triple.combination(2).to_a
     matching_points = []
 
-    lines_pares.each do |line_duo|
-      matching_points << common_point(line_duo)
+    line_triple.combination(2).to_a.each do |line_tuple|
+      matching_points << common_point(line_tuple)
     end
 
-    matching_points.uniq
+    matching_points.uniq.compact.size == 3 ? matching_points : [nil]
   end
 
-  def common_point(line_duo)
-    line_duo[0].points.each do |point_line_1|
-      line_duo[1].points.each do |point_line_2|
+  def common_point(line_tuple)
+    line_tuple[0].points.each do |point_line_1|
+      line_tuple[1].points.each do |point_line_2|
         return point_line_1.name if point_line_1 == point_line_2
       end
+    end
+    nil
+  end
+
+  def print_triangles(triangles_points)
+    triangles_points.each do |triangle|
+      puts triangle.to_s
     end
   end
 
